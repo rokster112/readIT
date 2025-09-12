@@ -8,13 +8,15 @@ export default function TopicCard({
   t,
   linkable = true,
   token,
-  payload,
+  payload = false,
   handleDelete,
   setToggleUpdateTopic,
   toggleUpdateTopic,
 }) {
   const Wrapper = linkable ? Link : "div";
   const wrapperProps = linkable ? { to: `/topics/${t._id}` } : {};
+  const token = localStorage.getItem("token");
+  const userId = !payload ? token : payload.id;
   return (
     <div
       className={`flex flex-col min-w-[345px] w-full max-w-[850px] h-fit m-2 bg-white p-4 border-white rounded-md transition-all ease-in-out duration-300 ${
@@ -51,7 +53,7 @@ export default function TopicCard({
           <p className="text-gray-500">{t.description}</p>
         </div>
       </Wrapper>
-      <TopicReactionBar t={t} userId={payload?.id} />
+      <TopicReactionBar t={t} userId={userId} />
     </div>
   );
 }
