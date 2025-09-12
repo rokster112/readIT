@@ -1,20 +1,9 @@
-import { Puff } from "react-loader-spinner";
+import { PuffLoader } from "react-spinners";
 
 export default function Loader() {
   return (
-    <div
-      style={{ translate: "50% 50%" }}
-      className="absolute top-[50%] right-[50%] "
-    >
-      <Puff
-        visible={true}
-        height="80"
-        width="80"
-        color="#3b3b6b"
-        ariaLabel="puff-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <PuffLoader size={80} color="#3b3b6b" />
     </div>
   );
 }
