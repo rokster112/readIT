@@ -1,5 +1,6 @@
 import { handleChange } from "../utils/HandleFormChange";
 import closeBtn from "../assets/close.png";
+import { useEffect } from "react";
 
 export default function TopicForm({
   formLabel,
@@ -14,11 +15,16 @@ export default function TopicForm({
 }) {
   const toggled = toggleCreateTopic || toggleUpdateTopic;
 
+  useEffect(() => {
+    document.body.style.overflow = toggled ? "hidden" : "auto";
+    const footer = document.querySelector(".footer");
+    footer.style.display = toggled ? "none" : "flex";
+  }, [toggled]);
   return (
     <div
-      className={`min-h-[calc(100vh-5rem)] h-full overflow-y-auto overflow-x-hidden ${
+      className={`h-[calc(100vh-5rem)] absolute top-20 overflow-x-hidden ${
         toggled ? "w-full" : "w-0"
-      } flex flex-col items-center justify-start bg-white absolute top-20 transition-all duration-600 ease-in-out`}
+      } flex flex-col items-center justify-start bg-white transition-all duration-600 ease-in-out`}
     >
       <form
         onSubmit={(e) => handleSubmit(e)}
@@ -44,7 +50,7 @@ export default function TopicForm({
         <label className="flex flex-col font-bold">
           Content
           <textarea
-            className="min-h-40 rounded-md text-black bg-white hover:border-gray-400 border-1 border-gray-300 py-2 pl-1 focus:border-[#CF1818] focus:outline-none"
+            className="h-auto rounded-md text-black bg-white hover:border-gray-400 border-1 border-gray-300 py-2 pl-1 focus:border-[#CF1818] focus:outline-none"
             name="description"
             placeholder="Content"
             value={formData.description}

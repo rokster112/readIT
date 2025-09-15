@@ -46,7 +46,11 @@ export default function TopicSingle({ payload }) {
   }
 
   return (
-    <div className="flex flex-col items-center mx-2 pt-4 min-h-[var(--height-screen)]">
+    <div
+      className={`flex flex-col items-center mx-2 pt-4 min-h-[var(--height-screen)] ${
+        toggleUpdateTopic && "h-0"
+      }`}
+    >
       {loading ? (
         <Loader />
       ) : error.message === "Incorrect Object ID" ? (
