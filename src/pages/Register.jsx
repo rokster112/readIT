@@ -25,7 +25,7 @@ export default function Register() {
 
   return (
     <div className="min-h-[var(--height-screen)] flex flex-col justify-center items-center">
-      <div className="relative top-[-50px] flex flex-col items-center justify-center">
+      <div className="py-10 flex flex-col items-center justify-center">
         <img className="h-14" src={ReadIt} />
         <h1 className="text-4xl text-[#e92515] font-bold relative ">
           Register
@@ -85,7 +85,7 @@ export default function Register() {
           Sign Up
         </button>
       </form>
-      <p className="text-purple">
+      <p className="text-purple my-3">
         Already have an account?{" "}
         <Link
           className="text-[#CF1818] hover:underline hover:text-[#be1414]"

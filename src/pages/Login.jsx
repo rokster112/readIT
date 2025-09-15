@@ -74,7 +74,7 @@ export default function Login() {
           Log In
         </button>
       </form>
-      <p className="text-purple">
+      <p className="text-purple my-3">
         Don't have an account?{" "}
         <Link
           className="text-[#CF1818] hover:underline hover:text-[#be1414]"

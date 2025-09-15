@@ -17,7 +17,7 @@ export default function TopicCard({
   return (
     <div
       className={`flex flex-col min-w-[345px] w-full max-w-[850px] h-fit m-2 bg-white p-4 border-white rounded-md transition-all ease-in-out duration-300 ${
-        linkable ? "border-1 hover:border-blue-300" : ""
+        linkable ? "border-1 hover:border-[#CF1818]" : ""
       } shadow-2xl`}
     >
       <Wrapper {...wrapperProps}>
