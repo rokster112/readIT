@@ -16,7 +16,7 @@ export default function TopicForm({
 
   return (
     <div
-      className={`min-h-[calc(100vh-5rem)] h-fit overflow-x-hidden ${
+      className={`min-h-[calc(100vh-5rem)] h-full overflow-y-auto overflow-x-hidden ${
         toggled ? "w-full" : "w-0"
       } flex flex-col items-center justify-start bg-white absolute top-20 transition-all duration-600 ease-in-out`}
     >
