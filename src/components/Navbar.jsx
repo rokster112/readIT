@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import closeBtn from "../assets/close.png";
 import readIt from "../assets/read-it.png";
 
-export default function Navbar({ token, setToggleCreateTopic }) {
+export default function Navbar({ payload, setToggleCreateTopic, setPayload }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const navigate = useNavigate();
 
@@ -13,6 +13,7 @@ export default function Navbar({ token, setToggleCreateTopic }) {
     // to home "/" route.
     setTimeout(() => {
       navigate("/", { replace: true });
+      setPayload(null);
     }, 50);
   }
 
@@ -70,7 +71,7 @@ export default function Navbar({ token, setToggleCreateTopic }) {
           >
             Topics
           </Link>
-          {!token ? (
+          {!payload ? (
             <>
               <Link
                 to={"/login"}

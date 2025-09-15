@@ -7,17 +7,17 @@ import commentBubble from "../assets/comment-bubble.png";
 import { safeApiCall } from "../services/HomeService";
 import { UpdateLikeDislike } from "../services/TopicSingleService";
 import { useNavigate } from "react-router-dom";
-export default function TopicReactionBar({ t, userId = false }) {
+export default function TopicReactionBar({ t, payload }) {
   const [error, setError] = useState(false);
   const [totalLikes, setTotalLikes] = useState(t.like - t.dislike);
   const [selectedReaction, setSelectedReaction] = useState({
-    like: t?.likedBy?.includes(userId),
-    dislike: t?.dislikeBy?.includes(userId),
+    like: t?.likedBy?.includes(payload?.id),
+    dislike: t?.dislikeBy?.includes(payload?.id),
   });
   const navigate = useNavigate();
-
+  console.log(payload);
   function redirect() {
-    if (!userId) {
+    if (!payload) {
       navigate("/login", { state: "You are not logged in" });
       return true;
     }

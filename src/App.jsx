@@ -36,7 +36,11 @@ export default function App() {
 
   return (
     <div className={`bg-gray-50 min-h-screen`}>
-      <Navbar token={payload} setToggleCreateTopic={setToggleCreateTopic} />
+      <Navbar
+        payload={payload}
+        setPayload={setPayload}
+        setToggleCreateTopic={setToggleCreateTopic}
+      />
 
       <Routes>
         <Route path="/" element={<Home payload={payload} />} />

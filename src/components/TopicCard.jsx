@@ -50,7 +50,7 @@ export default function TopicCard({
           <p className="text-gray-500">{t.description}</p>
         </div>
       </Wrapper>
-      <TopicReactionBar t={t} userId={payload?.id} />
+      <TopicReactionBar t={t} payload={payload} />
     </div>
   );
 }
