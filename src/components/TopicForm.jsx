@@ -1,6 +1,5 @@
 import { handleChange } from "../utils/HandleFormChange";
 import closeBtn from "../assets/close.png";
-import { useLocation } from "react-router-dom";
 
 export default function TopicForm({
   formLabel,
@@ -14,9 +13,7 @@ export default function TopicForm({
   error,
 }) {
   const toggled = toggleCreateTopic || toggleUpdateTopic;
-  const location = useLocation();
-  const splitPathnameArr = location.pathname.split("/");
-  console.log(splitPathnameArr);
+
   return (
     <div
       className={`h-[calc(100vh-5rem)] overflow-x-hidden ${

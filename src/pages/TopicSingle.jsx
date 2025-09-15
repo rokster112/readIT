@@ -11,7 +11,7 @@ import Loader from "../components/Loader";
 import TopicSingleComments from "../components/TopicSingleComments";
 import UpdateTopic from "./UpdateTopic";
 
-export default function TopicSingle({ token, payload }) {
+export default function TopicSingle({ payload }) {
   const { id } = useParams();
   const [toggleUpdateTopic, setToggleUpdateTopic] = useState(false);
   const [topic, setTopic] = useState({});
@@ -56,7 +56,6 @@ export default function TopicSingle({ token, payload }) {
           <TopicCard
             t={topic}
             linkable={false}
-            token={token}
             payload={payload}
             handleDelete={handleDelete}
             setToggleUpdateTopic={setToggleUpdateTopic}

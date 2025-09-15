@@ -17,32 +17,31 @@ import UpdateTopic from "./pages/UpdateTopic";
 
 export default function App() {
   const [toggleCreateTopic, setToggleCreateTopic] = useState(false);
-  const token = localStorage.getItem("token");
-  const payload = token && jwtDecode(token);
+  const [payload, setPayload] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
     if (token) {
-      isTokenExpired(payload, navigate);
+      const decoded = jwtDecode(token);
+      setPayload(decoded);
+      isTokenExpired(decoded, navigate);
+    } else {
+      setPayload(null);
     }
 
-    if (toggleCreateTopic) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [token, navigate, toggleCreateTopic]);
+    document.body.style.overflow = toggleCreateTopic ? "hidden" : "auto";
+  }, [navigate, toggleCreateTopic]);
 
   return (
     <div className={`bg-gray-50 min-h-screen`}>
-      <Navbar token={token} setToggleCreateTopic={setToggleCreateTopic} />
+      <Navbar token={payload} setToggleCreateTopic={setToggleCreateTopic} />
 
       <Routes>
         <Route path="/" element={<Home payload={payload} />} />
         <Route path="/topics" element={<Topics payload={payload} />} />
-        <Route
-          path="/topics/:id"
-          element={<TopicSingle token={token} payload={payload} />}
-        >
+        <Route path="/topics/:id" element={<TopicSingle payload={payload} />}>
           <Route element={<UpdateTopic />} />
         </Route>
         <Route element={<Authorization />}>
