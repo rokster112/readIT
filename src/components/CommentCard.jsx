@@ -30,7 +30,14 @@ export default function CommentCard({ c, payload, id, setComments }) {
 
     if (error) return setError(error);
 
-    setFormData({ text: c?.text });
+    setFormData({ text: data.updatedComment.text });
+    setComments((prev) => {
+      return prev.map((comment) =>
+        comment._id === data.updatedComment._id ? data.updatedComment : comment
+      );
+    });
+
+    setToggleCommentEdit(false);
     return data;
   }
 
